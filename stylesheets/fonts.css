@@ -1,0 +1,7 @@
+@font-face {
+  font-family: "Kommuna";
+  src: local("Kommuna-800Wide"),
+    url("fonts/Kommuna-800Wide.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}

@@ -1,0 +1,28 @@
+@keyframes hue {
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    outline-offset: 0vw;
+    outline-color: #dbfc3c;
+  }
+  100% {
+    outline-offset: 20vw;
+    outline-color: rgba(219, 252, 60, 0); /* Плавно исчезает */
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

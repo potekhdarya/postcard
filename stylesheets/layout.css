@@ -1,0 +1,434 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #2a00ff;
+  position: relative;
+  font-family: "Kommuna", sans-serif;
+  overflow-x: hidden;
+}
+
+.gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 35vh; /* маленький блок */
+  background: linear-gradient(
+    to bottom,
+    #ff0000 0%,
+    /* красный сверху */ #ff0000 5%,
+    /* красный держится до середины блока */ #2a00ff 100%
+      /* синий внизу блока */
+  );
+  z-index: 0;
+}
+
+.pulse {
+  position: absolute;
+  top: 12.7vh;
+  left: 50%;
+  transform: translateX(-50%) translateY(-70%);
+  height: 1vw;
+  width: 1vw;
+  border-radius: 50%;
+  outline: solid 0.2vw #dbfc3c;
+  animation: pulse 3s ease-in-out infinite;
+  z-index: 14;
+}
+
+.pulse:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.pulse:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.pulse:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.star {
+  position: absolute;
+  width: 25vw;
+  height: 25vh;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle closest-side at center center,
+    hsl(125.10000000000002, 50%, 50%) 0.73%,
+    hsl(85.60000000000002, 50%, 50%) 6.51%,
+    hsl(276.4, 50%, 50%) 13.95%,
+    hsl(251.70000000000005, 50%, 50%) 24.93%,
+    hsl(340.29999999999995, 50%, 50%) 33.77%,
+    hsl(53.69999999999999, 50%, 50%) 42.48%,
+    hsl(4.100000000000023, 50%, 50%) 52.45%,
+    hsl(37.69999999999999, 50%, 50%) 54.76%,
+    hsl(335.9, 50%, 50%) 73.7%,
+    hsla(335.9, 50%, 50%, 0) 100%
+  );
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-70%);
+  z-index: 15;
+
+  animation: hue 2s linear infinite;
+}
+
+.textBalls {
+  position: relative;
+  display: flex;
+  align-content: flex-start;
+  justify-content: space-between;
+  top: 20vh;
+  padding-right: 5vw;
+  padding-left: 5vw;
+}
+
+.textBall {
+  align-content: center;
+  width: 15vw;
+  height: 15vw;
+  border-radius: 50%;
+  border: 0.2vw solid #dbfc3c; /* Толщина, стиль, цвет */
+}
+
+.firstLine {
+  width: 15vw;
+  height: 15vw;
+  position: relative;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  padding-top: 5.5vw;
+  padding-right: 1.5vw;
+  padding-left: 1.3vw;
+  z-index: 1;
+}
+
+.secondLine h1 {
+  position: relative;
+  width: 15vw;
+  height: 9vw;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  justify-content: space-between;
+  left: 5.6vw;
+  top: -14vw;
+  z-index: 2;
+}
+
+.text {
+  font-size: 4.3vw;
+  color: #dbfc3c;
+  font-stretch: ultra-expanded;
+}
+
+.tree {
+  position: relative;
+  height: 100vh;
+  top: 5vh;
+}
+
+.trapezoid {
+  position: absolute;
+  width: 100%;
+  height: 40vh;
+  background: linear-gradient(to bottom, #23ff06, #319d27);
+
+  /* Делаем треугольник */
+  clip-path: polygon(
+    50% 0%,
+    /* верхняя вершина */ 100% 100%,
+    /* правый низ */ 0% 100% /* левый низ */
+  );
+  z-index: 3;
+}
+
+.trapezoid:nth-of-type(2) {
+  top: 0;
+  z-index: 3;
+}
+
+/* 2-й (чуть ниже) */
+.trapezoid:nth-of-type(3) {
+  top: 25vh;
+  z-index: 2;
+}
+
+/* 3-й (самый нижний) */
+.trapezoid:nth-of-type(4) {
+  top: 50vh;
+  z-index: 1;
+}
+
+.trunk {
+  position: absolute;
+  top: 90vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18vw;
+  height: 25vh;
+  background-color: #ff0000;
+}
+
+.balls {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+.ballsFirstLine {
+  position: absolute;
+  top: 37vh; /* Нижний край первой трапеции */
+  left: 10vw;
+  right: 10vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ballsSecondLine {
+  position: absolute;
+  top: 62vh; /* Нижний край второй трапеции */
+  left: 10vw;
+  right: 10vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ballsThirdLine {
+  position: absolute;
+  top: 87vh; /* Нижний край третьей трапеции */
+  left: 10vw;
+  right: 10vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ball {
+  width: 12vw;
+  height: 10vh;
+  border-radius: 50%;
+  animation: hue 2s linear infinite;
+  flex-shrink: 0;
+}
+
+.ballsFirstLine .ball:nth-of-type(1) {
+  background: radial-gradient(
+    circle closest-side at center center,
+    hsl(12.399999999999977, 50%, 50%) 31.83%,
+    hsl(126.80000000000001, 50%, 50%) 37.22%,
+    hsl(257.1, 50%, 50%) 42.93%,
+    hsl(66.19999999999999, 50%, 50%) 53.32%,
+    hsl(310, 93%, 76%) 80.9%,
+    hsla(310.70000000000005, 50%, 50%, 0) 100%
+  );
+}
+
+.ballsFirstLine .ball:nth-of-type(2) {
+  background: radial-gradient(
+    circle closest-side at center center,
+    hsl(321.29999999999995, 50%, 50%) 39.15%,
+    hsl(39.19999999999999, 50%, 50%) 51.53%,
+    hsl(161, 50%, 50%) 79.61%,
+    hsl(101.60000000000002, 50%, 50%) 79.68%,
+    hsl(296.70000000000005, 50%, 50%) 83.87%,
+    hsla(296.70000000000005, 50%, 50%, 0) 100%
+  );
+}
+
+.ballsFirstLine .ball:nth-of-type(3) {
+  background: radial-gradient(
+    circle closest-side at center center,
+    hsl(273.6, 50%, 50%) 2.3%,
+    hsl(5.899999999999977, 50%, 50%) 16.59%,
+    hsl(273.79999999999995, 50%, 50%) 25.87%,
+    hsl(227.60000000000002, 50%, 50%) 32.58%,
+    hsl(26.69999999999999, 50%, 50%) 32.81%,
+    hsl(351, 50%, 50%) 64.21%,
+    hsl(265, 50%, 50%) 64.87%,
+    hsl(104.89999999999998, 50%, 50%) 81.04%,
+    hsl(10.600000000000023, 50%, 50%) 93.88%,
+    hsla(10.600000000000023, 50%, 50%, 0) 100%
+  );
+}
+
+.ballsFirstLine .ball:nth-of-type(4) {
+  background: radial-gradient(
+    circle closest-side at center center,
+    hsl(302.9, 50%, 50%) 79.58%,
+    hsl(229.60000000000002, 50%, 50%) 93.2%,
+    hsl(97.19999999999999, 50%, 50%) 94.32%,
+    hsla(97.19999999999999, 50%, 50%, 0) 100%
+  );
+}
+
+.ballsFirstLine .ball:nth-of-type(5) {
+  background: radial-gradient(
+    circle closest-side at center center,
+    hsl(185.60000000000002, 50%, 50%) 1.72%,
+    hsl(63.30000000000001, 50%, 50%) 9.35%,
+    hsl(158.89999999999998, 50%, 50%) 24.94%,
+    hsl(56.10000000000002, 50%, 50%) 44.1%,
+    hsl(14.100000000000023, 50%, 50%) 97.02%,
+    hsla(14.100000000000023, 50%, 50%, 0) 100%
+  );
+}
+
+.ballsSecondLine .ball:nth-of-type(1) {
+  background: radial-gradient(
+    circle closest-side at center center,
+    hsl(54.89999999999998, 50%, 50%) 2.06%,
+    hsl(85.39999999999998, 50%, 50%) 10.45%,
+    hsl(252.10000000000002, 50%, 50%) 80.45%,
+    hsla(252.10000000000002, 50%, 50%, 0) 100%
+  );
+}
+
+.ballsSecondLine .ball:nth-of-type(2) {
+  background: radial-gradient(
+    circle closest-side at center center,
+    hsl(129.89999999999998, 50%, 50%) 0.41%,
+    hsl(52, 50%, 50%) 25.63%,
+    hsl(16.30000000000001, 50%, 50%) 63.42%,
+    hsl(343.9, 50%, 50%) 64.04%,
+    hsl(103.39999999999998, 50%, 50%) 72.81%,
+    hsl(258.1, 50%, 50%) 82.87%,
+    hsl(38.19999999999999, 50%, 50%) 82.89%,
+    hsla(38.19999999999999, 50%, 50%, 0) 100%
+  );
+}
+
+.ballsSecondLine .ball:nth-of-type(5) {
+  background: radial-gradient(
+    circle closest-side at center center,
+    hsl(197.20000000000005, 50%, 50%) 7.24%,
+    hsl(181.89999999999998, 50%, 50%) 15.47%,
+    hsl(47.89999999999998, 50%, 50%) 32.13%,
+    hsl(55.30000000000001, 50%, 50%) 39.72%,
+    hsl(12.300000000000011, 50%, 50%) 40.91%,
+    hsl(261.1, 50%, 50%) 87.95%,
+    hsla(261.1, 50%, 50%, 0) 100%
+  );
+}
+
+.ballsSecondLine .ball:nth-of-type(4) {
+  background: radial-gradient(
+    circle closest-side at center center,
+    hsl(353.20000000000005, 50%, 50%) 3.15%,
+    hsl(359.4, 50%, 50%) 30.15%,
+    hsl(120.89999999999998, 50%, 50%) 31.41%,
+    hsl(9.399999999999977, 50%, 50%) 48.05%,
+    hsl(83, 50%, 50%) 92.13%,
+    hsla(83, 50%, 50%, 0) 100%
+  );
+}
+
+.ballsSecondLine .ball:nth-of-type(3) {
+  background: radial-gradient(
+    circle closest-side at center center,
+    hsl(189.29999999999995, 50%, 50%) 15.39%,
+    hsl(242.5, 50%, 50%) 59.58%,
+    hsl(100.69999999999999, 50%, 50%) 74.13%,
+    hsl(12.300000000000011, 50%, 50%) 40.91%,
+    hsla(100.69999999999999, 50%, 50%, 0) 100%
+  );
+}
+
+.ballsThirdLine .ball:nth-of-type(1) {
+  background: radial-gradient(
+    circle closest-side at center center,
+    hsl(300.79999999999995, 50%, 50%) 3.43%,
+    hsl(254.20000000000005, 50%, 50%) 48.92%,
+    hsl(132.2, 50%, 50%) 48.93%,
+    hsl(222.79999999999995, 50%, 50%) 52.39%,
+    hsl(297, 50%, 50%) 64.83%,
+    hsl(120.30000000000001, 50%, 50%) 68.47%,
+    hsl(152, 50%, 50%) 71.73%,
+    hsla(152, 50%, 50%, 0) 100%
+  );
+}
+
+.ballsThirdLine .ball:nth-of-type(2) {
+  background: radial-gradient(
+    circle closest-side at center center,
+    hsl(349.5, 50%, 50%) 38.1%,
+    hsl(228.79999999999995, 50%, 50%) 58.95%,
+    hsl(261.1, 50%, 50%) 78.56%,
+    hsla(261.1, 50%, 50%, 0) 100%
+  );
+}
+
+.ballsThirdLine .ball:nth-of-type(3) {
+  background: radial-gradient(
+    circle closest-side at center center,
+    hsl(234.39999999999998, 50%, 50%) 6.75%,
+    hsl(9.600000000000023, 50%, 50%) 12.64%,
+    hsl(339, 50%, 50%) 31.98%,
+    hsl(94.89999999999998, 50%, 50%) 39.5%,
+    hsl(154.10000000000002, 50%, 50%) 55.08%,
+    hsl(186.60000000000002, 50%, 50%) 76.63%,
+    hsl(270.1, 50%, 50%) 79.51%,
+    hsla(270.1, 50%, 50%, 0) 100%
+  );
+}
+
+.ballsThirdLine .ball:nth-of-type(4) {
+  background: radial-gradient(
+    circle closest-side at center center,
+    hsl(229.70000000000005, 50%, 50%) 12.08%,
+    hsl(108, 50%, 50%) 24.17%,
+    hsl(28, 50%, 50%) 54.13%,
+    hsl(34.60000000000002, 50%, 50%) 65.76%,
+    hsla(34.60000000000002, 50%, 50%, 0) 100%
+  );
+}
+
+.ballsThirdLine .ball:nth-of-type(5) {
+  background: radial-gradient(
+    circle closest-side at center center,
+    hsl(81.80000000000001, 50%, 50%) 6.9%,
+    hsl(114.80000000000001, 50%, 50%) 7.81%,
+    hsl(327, 50%, 50%) 24.75%,
+    hsl(230.20000000000005, 50%, 50%) 27.23%,
+    hsl(1, 50%, 50%) 55.4%,
+    hsla(1, 50%, 50%, 0) 100%
+  );
+}
+
+.footer {
+  position: relative;
+  width: 100%;
+  height: 7vh;
+  background: #dbfc3c;
+  top: 13vh;
+  overflow: hidden;
+}
+
+.marquee {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  color: #2a00ff;
+  font-size: 2vw;
+  font-family: "Kommuna", sans-serif;
+  font-stretch: ultra-expanded;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.marquee-text {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 20s linear infinite;
+  white-space: nowrap;
+}
+
+.marquee-text::after {
+  content: "• HSE AD SCHOOL • DASHA POTEKHINA • HSE AD SCHOOL • DASHA POTEKHINA";
+}
